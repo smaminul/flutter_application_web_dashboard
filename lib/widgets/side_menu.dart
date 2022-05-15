@@ -70,7 +70,7 @@ class SideMenu extends StatelessWidget {
                           menuController.changeActiveitemTo(itemName);
                           if (ResponsiveWidget.isSmallScreen(context))
                             Get.back();
-                          // TODO:: go to item name Rout
+                          // TODO:: go to item name Route
                         }
                       }))
                   .toList())
