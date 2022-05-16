@@ -1,3 +1,5 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_web_dashboard/constants/controllers.dart';
 import 'package:flutter_application_web_dashboard/constants/style.dart';
@@ -30,7 +32,7 @@ class SideMenu extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(right: 12),
-                      child: Container(
+                      child: SizedBox(
                         height: 80,
                         width: 100,
                         child: Image.asset("assets/image/Amin-IT-logo-Dark.png")),
@@ -68,9 +70,11 @@ class SideMenu extends StatelessWidget {
                         }
                         if (!menuController.isActive(itemName)) {
                           menuController.changeActiveitemTo(itemName);
-                          if (ResponsiveWidget.isSmallScreen(context))
+                          if (ResponsiveWidget.isSmallScreen(context)) {
                             Get.back();
+                          }
                           // TODO:: go to item name Route
+                          navigationController.navigateTo(itemName);
                         }
                       }))
                   .toList())
