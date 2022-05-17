@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_web_dashboard/constants/controllers.dart';
 import 'package:flutter_application_web_dashboard/constants/style.dart';
 import 'package:flutter_application_web_dashboard/helpers/responsiveness.dart';
+import 'package:flutter_application_web_dashboard/pages/authentication/authentication.dart';
 import 'package:flutter_application_web_dashboard/routing/route.dart';
 import 'package:flutter_application_web_dashboard/widgets/custom_text.dart';
 import 'package:flutter_application_web_dashboard/widgets/side_menu_item.dart';
@@ -60,21 +61,20 @@ class SideMenu extends StatelessWidget {
           Column(
               mainAxisSize: MainAxisSize.min,
               children: sideMenuItems
-                  .map((itemName) => SideMenuItem(
-                      itemName: itemName == AuthenticationPageRoute
-                          ? "Lag Out"
-                          : itemName,
+                  .map((item) => SideMenuItem(
+                      itemName: item.name,
                       onTap: () {
-                        if (itemName == AuthenticationPageRoute) {
-                          // TODO:: go to authentication page
+                        if (item.route == AuthenticationPageRoute) {
+                           menuController.changeActiveitemTo(OverViewPageDisplayName); 
+                            Get.offAllNamed(AuthenticationPageRoute);
                         }
-                        if (!menuController.isActive(itemName)) {
-                          menuController.changeActiveitemTo(itemName);
+                        if (!menuController.isActive(item.name)) {
+                          menuController.changeActiveitemTo(item.name);
                           if (ResponsiveWidget.isSmallScreen(context)) {
                             Get.back();
                           }
-                          // TODO:: go to item name Route
-                          navigationController.navigateTo(itemName);
+                         
+                          navigationController.navigateTo(item.route);
                         }
                       }))
                   .toList())

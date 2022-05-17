@@ -3,19 +3,32 @@
 
 // ignore_for_file: constant_identifier_names
 
-const OverViewPageRoute= "Overview";
 
-const DriversPageRoute= "Drivers";
+const RootRoute= "/";
 
-const ClientsPageRoute= "Clients";
+const OverViewPageDisplayName = "Overview";
+const OverViewPageRoute = "/overview";
 
- const AuthenticationPageRoute= "Authentication";
+const DriversPageDisplayName = "Drivers";
+const DriversPageRoute = "/drivers";
 
- List sideMenuItems = [
+const ClientsPageDisplayName = "Clients";
+const ClientsPageRoute = "/clients";
 
-  OverViewPageRoute,
-  DriversPageRoute,
-  ClientsPageRoute,
-  AuthenticationPageRoute
+ const AuthenticationPageDisplayName = "Log Out";
+  const AuthenticationPageRoute = "/auth";
+
+class MenuItem{
+  final String name ;
+  final String route;
+  MenuItem(this.name, this.route);
+}
+
+ List <MenuItem > sideMenuItems = [
+
+MenuItem(OverViewPageDisplayName,  OverViewPageRoute ),
+MenuItem(DriversPageDisplayName,  DriversPageRoute ),
+MenuItem(ClientsPageDisplayName,  ClientsPageRoute ),
+MenuItem(AuthenticationPageDisplayName,  AuthenticationPageRoute ),
  ];
 
